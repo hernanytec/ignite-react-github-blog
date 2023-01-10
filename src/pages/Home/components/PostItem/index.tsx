@@ -1,8 +1,15 @@
+import { useNavigate } from 'react-router-dom'
 import { PostItemContainer } from './styles'
 
 export function PostItem() {
+  const navigate = useNavigate()
+
+  function handlePostClick() {
+    navigate('/post')
+  }
+
   return (
-    <PostItemContainer>
+    <PostItemContainer onClick={handlePostClick}>
       <header>
         <strong>JavaScript data types and data structures</strong>
         <span>Há 1 dia</span>
