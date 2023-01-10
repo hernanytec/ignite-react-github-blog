@@ -6,7 +6,7 @@ export const ProfileCardContainer = styled.div`
   background-color: ${(props) => props.theme['base-profile']};
   padding: 32px 32px 32px 40px;
   border-radius: 10px;
-  max-width: 864px;
+  margin-top: -100px;
 
   img {
     width: 148px;
