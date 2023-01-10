@@ -51,7 +51,7 @@ export function ProfileCard() {
 
           <Info>
             <FontAwesomeIcon icon={faUserGroup} />
-            10 seguidores
+            24 seguidores
           </Info>
         </InfoContainer>
       </UserDetailsContainer>
