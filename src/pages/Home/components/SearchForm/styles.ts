@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const FormContainer = styled.div`
-  max-width: 864px;
   margin-top: 72px;
 
   input {
