@@ -1,4 +1,5 @@
 import { Cover } from '../../components/Cover'
+import { PostList } from './components/PostList'
 import { SearchForm } from './components/SearchForm'
 import { HomeContainer } from './styles'
 
@@ -7,7 +8,10 @@ export function Home() {
     <HomeContainer>
       <Cover />
 
-      <SearchForm />
+      <main>
+        <SearchForm />
+        <PostList />
+      </main>
     </HomeContainer>
   )
 }

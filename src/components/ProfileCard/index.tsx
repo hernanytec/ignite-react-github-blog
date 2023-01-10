@@ -28,7 +28,7 @@ export function ProfileCard() {
               target="_blank"
               rel="noreferrer"
             >
-              <span>GITHUB</span>
+              GITHUB
               <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
             </a>
           </UsernameContainer>

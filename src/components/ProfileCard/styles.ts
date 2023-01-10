@@ -34,6 +34,12 @@ export const UsernameContainer = styled.div`
     font-weight: bold;
     text-decoration: none;
     color: ${(props) => props.theme.blue};
+    border-bottom: 1px solid transparent;
+
+    &:hover {
+      border-bottom: 1px solid ${(props) => props.theme.blue};
+      transition: border 0.2s;
+    }
   }
 `
 

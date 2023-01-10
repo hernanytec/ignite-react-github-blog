@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const FormContainer = styled.div`
   max-width: 864px;
-  margin: 200px auto;
+  margin-top: 200px;
 
   input {
     width: 100%;
@@ -10,9 +10,14 @@ export const FormContainer = styled.div`
     border-radius: 6px;
     background-color: ${(props) => props.theme['base-input']};
     border: 1px solid ${(props) => props.theme['base-border']};
+    color: ${(props) => props.theme['base-text']};
 
     &::placeholder {
       color: ${(props) => props.theme['base-label']};
+    }
+
+    &:focus {
+      outline: 1px solid ${(props) => props.theme.blue};
     }
   }
 `
