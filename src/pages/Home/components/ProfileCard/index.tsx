@@ -5,6 +5,8 @@ import {
   faUserGroup,
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useQuery } from '@tanstack/react-query'
+import { fetchUserInfo } from '../../../../utils/fetchers'
 import {
   Info,
   InfoContainer,
@@ -14,14 +16,19 @@ import {
 } from './styles'
 
 export function ProfileCard() {
+  const { data: user } = useQuery({
+    queryKey: ['user'],
+    queryFn: fetchUserInfo,
+  })
+
   return (
     <ProfileCardContainer>
-      <img src="https://www.github.com/hernanytec.png" alt="" />
+      <img src={user?.avatar_url} alt="" />
 
       <UserDetailsContainer>
         <div>
           <UsernameContainer>
-            <h1>Hernany Costa</h1>
+            <h1>{user?.name}</h1>
 
             <a
               href="https://github.com/hernanytec"
@@ -33,25 +40,23 @@ export function ProfileCard() {
             </a>
           </UsernameContainer>
 
-          <p>
-            Web developer and Machine learning enthusiast. Computer Scientist
-          </p>
+          <p>{user?.bio}</p>
         </div>
 
         <InfoContainer>
           <Info>
             <FontAwesomeIcon icon={faGithub} />
-            hernanytec
+            {user?.login}
           </Info>
 
           <Info>
             <FontAwesomeIcon icon={faBuilding} />
-            Compass.UOL
+            {user?.company}
           </Info>
 
           <Info>
             <FontAwesomeIcon icon={faUserGroup} />
-            24 seguidores
+            {user?.followers} seguidores
           </Info>
         </InfoContainer>
       </UserDetailsContainer>
