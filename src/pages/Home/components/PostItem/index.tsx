@@ -1,27 +1,29 @@
 import { useNavigate } from 'react-router-dom'
+import { PostInfo } from '../../../../utils/fetchers'
+import { getRelativeTime } from '../../../../utils/formatter'
 import { PostItemContainer } from './styles'
 
-export function PostItem() {
+interface PostItemProps {
+  post: PostInfo
+}
+
+export function PostItem({
+  // eslint-disable-next-line camelcase
+  post: { title, body, created_at, number },
+}: PostItemProps) {
   const navigate = useNavigate()
 
-  function handlePostClick() {
-    navigate('/post')
+  function handlePostClick(postNumber: number) {
+    navigate(`/post/${postNumber}`)
   }
 
   return (
-    <PostItemContainer onClick={handlePostClick}>
+    <PostItemContainer onClick={() => handlePostClick(number)}>
       <header>
-        <strong>JavaScript data types and data structures</strong>
-        <span>Há 1 dia</span>
+        <strong>{title}</strong>
+        <span>{getRelativeTime(created_at)}</span>
       </header>
-      <p>
-        Programming languages all have built-in data structures, but these often
-        differ from one language to another. This article attempts to list the
-        built-in data structures available in Lorem ipsum dolor sit, amet
-        consectetur adipisicing elit. Dignissimos doloribus itaque deleniti
-        ullam et, debitis cumque, est repellendus, consequuntur eum beatae! A
-        incidunt officia repellendus delectus sequi minus laborum. Dolores!
-      </p>
+      <p>{body}</p>
     </PostItemContainer>
   )
 }

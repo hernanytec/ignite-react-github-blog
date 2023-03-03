@@ -12,6 +12,7 @@ export function App() {
     defaultOptions: {
       queries: {
         cacheTime: defaultCacheTime,
+        refetchOnWindowFocus: false,
       },
     },
   })

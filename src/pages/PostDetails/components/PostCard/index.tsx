@@ -7,6 +7,8 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'react-router-dom'
+import { PostInfo } from '../../../../utils/fetchers'
+import { getRelativeTime } from '../../../../utils/formatter'
 import {
   Info,
   InfoContainer,
@@ -14,7 +16,11 @@ import {
   PostDetailsContainer,
 } from './styles'
 
-export function PostCard() {
+interface PostCardProps {
+  post: PostInfo
+}
+
+export function PostCard({ post }: PostCardProps) {
   return (
     <PostCardContainer>
       <header>
@@ -23,31 +29,29 @@ export function PostCard() {
           Voltar
         </Link>
 
-        <a
-          href="https://github.com/hernanytec"
-          target="_blank"
-          rel="noreferrer"
-        >
+        <a href={post.html_url} target="_blank" rel="noreferrer">
           Ver no github
           <FontAwesomeIcon icon={faArrowUpRightFromSquare} />
         </a>
       </header>
 
       <PostDetailsContainer>
-        <h1>JavaScript data types and data structures</h1>
+        <h1>{post.title}</h1>
 
         <InfoContainer>
           <Info>
             <FontAwesomeIcon icon={faGithub} />
+            {post.user.login}
           </Info>
 
           <Info>
             <FontAwesomeIcon icon={faCalendarDay} />
+            {getRelativeTime(post.created_at)}
           </Info>
 
           <Info>
             <FontAwesomeIcon icon={faComment} />
-            Comentários
+            {post.comments} {post.comments === 1 ? 'Comentário' : 'Comentários'}
           </Info>
         </InfoContainer>
       </PostDetailsContainer>
